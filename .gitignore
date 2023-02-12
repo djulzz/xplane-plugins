@@ -1,5 +1,7 @@
 *.mexw64
 *.asv
+*.slxc
+slprj/
 projects/qt_hello_world/debug
 projects/qt_hello_world/debug/*.exe
 
