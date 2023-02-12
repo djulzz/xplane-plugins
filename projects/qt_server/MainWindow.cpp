@@ -21,10 +21,29 @@
 ////////////////////////////////////////////////////////////////////////////////
 void MainWindow::processTheDatagram( const QNetworkDatagram& dg )
 {
+    if( 0 == m_counter_receptions ) {
+        /*
+            QElapsedTimer timer;
+    timer.start();
+        slowOperation1();
+
+    qDebug() << "The slow operation took" << timer.elapsed() << "milliseconds";
+
+        */
+       //elapsed()
+       m_timer->start(  );
+    }
     const QByteArray ba = dg.data(  );
     qsizetype byte_array_size = ba.size(  );
     const char* str = ba.data(  );
     uint8_t* buf_rcv = ( uint8_t* )( str );
+
+    if( m_counter_receptions > 0 ) {
+        qint64 ellapsed = timer.elapsed(  );
+        m_timer->start(  );
+    }
+
+    m_counter_receptions = m_counter_receptions + 1;
     return;
 }
 
@@ -41,7 +60,7 @@ void MainWindow::readPendingDatagrams( void )
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-MainWindow::MainWindow( QWidget* parent ) : QMainWindow( parent )
+MainWindow::MainWindow( QWidget* parent ) : QMainWindow( parent ), m_counter_receptions( 0 ), m_sum_receptions( 0.0 )
 {
     resize( 800, 600 );
     m_udp_socket = new QUdpSocket( this );

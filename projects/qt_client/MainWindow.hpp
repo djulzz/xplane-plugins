@@ -1,6 +1,6 @@
 /**
  * @file MainWindow.hpp
- * @author your name (you@domain.com)
+ * @author Julien Esposito (julien.esposito@gmail.com)
  * @brief 
  * @version 0.1
  * @date 2023-02-11
@@ -14,9 +14,7 @@
 
 #include <QMainWindow>
 #include <QUdpSocket>
-#include <QNetworkDatagram>
-#include <QElapsedTimer>
-#include <cstdint>
+#include <QTimer>
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -26,20 +24,15 @@ class MainWindow : public QMainWindow
 
     public:
         MainWindow( QWidget* parent = 0 );
-
         virtual ~MainWindow( void );
 
     public slots:
-        void readPendingDatagrams( void );
+        void sendData( void );
 
     protected:
         QUdpSocket* m_udp_socket;
-        QElapsedTimer   m_timer;
-        uint32_t        m_counter_receptions;
-        double          m_sum_receptions;
-
-    protected:
-        void processTheDatagram( const QNetworkDatagram& dg );
+        QTimer*     m_timer;
+        int         m_counter;
 };
 
 #endif /* MAINWINDOW_HPP defined */
