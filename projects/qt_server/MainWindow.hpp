@@ -1,7 +1,7 @@
 /**
  * @file MainWindow.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Julien Esposito (julien.esposito@gmail.com)
+ * @brief Part of the "qt_server" project.
  * @version 0.1
  * @date 2023-02-11
  * 
@@ -40,6 +40,7 @@ class MainWindow : public QMainWindow
 
     protected:
         void processTheDatagram( const QNetworkDatagram& dg );
+        void onReachingMaxNumReceptions( void );
 };
 
 #endif /* MAINWINDOW_HPP defined */

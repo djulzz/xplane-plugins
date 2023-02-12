@@ -1,7 +1,7 @@
 /**
  * @file MainWindow.cpp
  * @author Julien Esposito (julien.esposito@gmail.com)
- * @brief 
+ * @brief Part of "qt_client" project.
  * @version 0.1
  * @date 2023-02-11
  * 
@@ -52,6 +52,7 @@ MainWindow::MainWindow( QWidget* parent )
     connect( m_timer, &QTimer::timeout,
             this, &MainWindow::sendData );
     bool isValid = m_udp_socket->isValid(  );
+    m_timer->start(  );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
