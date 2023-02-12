@@ -32,3 +32,13 @@ projects/qt_client/*.bat
 
 
 projects/qt_server/*.pro
+
+projects/arinc429_lib/debug
+projects/arinc429_lib/release
+projects/arinc429_lib/*.stash
+projects/arinc429_lib/Makefile
+projects/arinc429_lib/Makefile.Debug
+projects/arinc429_lib/Makefile.Release
+projects/arinc429_lib/*.bat
+
+lib

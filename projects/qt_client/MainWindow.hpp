@@ -12,9 +12,11 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
+#include "MainWindowUI.hpp"
 #include <QMainWindow>
 #include <QUdpSocket>
 #include <QTimer>
+#include <QCloseEvent>
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,11 +30,19 @@ class MainWindow : public QMainWindow
 
     public slots:
         void sendData( void );
+        void updateActivity( void );
+        void onClose( void );
+
+    private:
+        void closeEvent( QCloseEvent* e );
 
     protected:
-        QUdpSocket* m_udp_socket;
-        QTimer*     m_timer;
-        int         m_counter;
+        Ui::MainWindow  m_ui;
+        QUdpSocket*     m_udp_socket;
+        QTimer*         m_timer;
+        int             m_counter;
+        QTimer*         m_timer_alive;
+        int             m_counter_seconds_alive;
 };
 
 #endif /* MAINWINDOW_HPP defined */
