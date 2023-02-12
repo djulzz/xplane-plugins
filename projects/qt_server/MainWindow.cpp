@@ -15,12 +15,42 @@
 #include "qt_server.hpp"
 #include "MainWindow.hpp"
 #include <QByteArray>
+#include <QCloseEvent>
+#include <QAction>
+
 #include <cstdio>
 #include <cstdint>
 #include <string>
 #include <cstring>
 
 #define SERVER_MAX_NUM_RECEPTIONS 10000
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+void MainWindow::onClose( void )
+{
+    m_udp_socket->close(  );
+    return;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+void MainWindow::onQuitClicked( bool clickedStatus )
+{
+    ( void )clickedStatus;
+    onClose(  );
+    close(  );
+    return;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+void MainWindow::closeEvent( QCloseEvent* event )
+{
+    onClose(  );
+    event->accept(  );
+    return;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -96,11 +126,15 @@ void MainWindow::readPendingDatagrams( void )
 ////////////////////////////////////////////////////////////////////////////////
 MainWindow::MainWindow( QWidget* parent ) : QMainWindow( parent ), m_counter_receptions( 0 ), m_sum_receptions( 0.0 )
 {
+    m_ui.setupUi( this );
     resize( 800, 600 );
     m_udp_socket = new QUdpSocket( this );
     m_udp_socket->bind( QHostAddress::LocalHost, SERVER_PORT );
     connect( m_udp_socket, &QUdpSocket::readyRead,
             this, &MainWindow::readPendingDatagrams );
+
+    connect( m_ui.actionExit, SIGNAL( triggered( bool ) ), this, SLOT( onQuitClicked( bool ) ) );
+
     bool isValid = m_udp_socket->isValid(  );
     // if( true == isValid ) {
     //     FILE* f = fopen( "success.txt", "w" ); fclose( f );
@@ -108,6 +142,7 @@ MainWindow::MainWindow( QWidget* parent ) : QMainWindow( parent ), m_counter_rec
     //     FILE* f = fopen( "failure.txt", "w" ); fclose( f );
     // }
     setWindowTitle( QString( "QT SERVER" ) );
+    setWindowIcon( QIcon( ":/icon.png" ) );
 }
 
 ////////////////////////////////////////////////////////////////////////////////

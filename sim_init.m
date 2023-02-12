@@ -1,3 +1,4 @@
+% note openarinc found @ https://github.com/stewbond/openarinc
 clear all;
 close all;
 clc;

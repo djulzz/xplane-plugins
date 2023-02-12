@@ -12,11 +12,14 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
+#include "MainWindowUI.hpp"
 #include <QMainWindow>
 #include <QUdpSocket>
 #include <QNetworkDatagram>
 #include <QElapsedTimer>
 #include <cstdint>
+
+class QCloseEvent;
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,9 +34,11 @@ class MainWindow : public QMainWindow
 
     public slots:
         void readPendingDatagrams( void );
+        void onQuitClicked( bool clickedStatus );
 
     protected:
-        QUdpSocket* m_udp_socket;
+        Ui::MainWindow   m_ui;
+        QUdpSocket*     m_udp_socket;
         QElapsedTimer   m_timer;
         uint32_t        m_counter_receptions;
         double          m_sum_receptions;
@@ -41,6 +46,10 @@ class MainWindow : public QMainWindow
     protected:
         void processTheDatagram( const QNetworkDatagram& dg );
         void onReachingMaxNumReceptions( void );
+
+    private:
+        void closeEvent( QCloseEvent* event );
+        void onClose( void );
 };
 
 #endif /* MAINWINDOW_HPP defined */

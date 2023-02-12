@@ -31,4 +31,4 @@ projects/qt_client/Makefile.Release
 projects/qt_client/*.bat
 
 
-
+projects/qt_server/*.pro
