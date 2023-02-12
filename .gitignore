@@ -1,3 +1,15 @@
 *.mexw64
 *.asv
+projects/qt_hello_world/debug
+projects/qt_hello_world/debug/*.exe
+
+projects/qt_hello_world/release
+projects/qt_hello_world/release/*.exe
+
+projects/qt_hello_world/*.stash
+projects/qt_hello_world/Makefile
+projects/qt_hello_world/Makefile.Debug
+projects/qt_hello_world/Makefile.Release
+projects/qt_hello_world/*.bat
+
 
