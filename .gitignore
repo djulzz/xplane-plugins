@@ -1,5 +1,7 @@
 *.mexw64
 *.asv
+*.slxc
+slprj/
 projects/qt_hello_world/debug
 projects/qt_hello_world/debug/*.exe
 
@@ -12,4 +14,31 @@ projects/qt_hello_world/Makefile.Debug
 projects/qt_hello_world/Makefile.Release
 projects/qt_hello_world/*.bat
 
+projects/qt_server/debug
+projects/qt_server/release
+projects/qt_server/*.stash
+projects/qt_server/Makefile
+projects/qt_server/Makefile.Debug
+projects/qt_server/Makefile.Release
+projects/qt_server/*.bat
 
+projects/qt_client/debug
+projects/qt_client/release
+projects/qt_client/*.stash
+projects/qt_client/Makefile
+projects/qt_client/Makefile.Debug
+projects/qt_client/Makefile.Release
+projects/qt_client/*.bat
+
+
+projects/qt_server/*.pro
+
+projects/arinc429_lib/debug
+projects/arinc429_lib/release
+projects/arinc429_lib/*.stash
+projects/arinc429_lib/Makefile
+projects/arinc429_lib/Makefile.Debug
+projects/arinc429_lib/Makefile.Release
+projects/arinc429_lib/*.bat
+
+lib
